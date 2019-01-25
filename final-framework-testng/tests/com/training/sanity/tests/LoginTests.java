@@ -4,7 +4,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -48,8 +50,18 @@ public class LoginTests {
 	@Test
 	public void validLoginTest() {
 		loginPOM.sendUserName("admin");
-		loginPOM.sendPassword("admin@123");
+		loginPOM.sendPassword("12345");
 		loginPOM.clickLoginBtn(); 
 		screenShot.captureScreenShot("First");
+		System.out.println(driver.getCurrentUrl());
+		Assert.assertEquals(driver.getCurrentUrl(),properties.getProperty("homeURL") );
 	}
+
+public WebDriver getDriver()
+{
+	return loginPOM.getDriver();
+}
+
+
+	
 }
