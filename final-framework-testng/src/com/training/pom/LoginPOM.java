@@ -35,10 +35,7 @@ public class LoginPOM {
 	public void clickLoginBtn() {
 		this.loginBtn.click(); 
 	}
-	public WebDriver getDriver()
-	{
-		return this.driver;
-	}
+	
 		
 	
 }

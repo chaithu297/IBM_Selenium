@@ -19,7 +19,7 @@ import com.training.utility.DriverNames;
 
 public class LoginTests {
 
-	private WebDriver driver;
+	public WebDriver driver;
 	private String baseUrl;
 	private LoginPOM loginPOM;
 	private static Properties properties;
@@ -47,7 +47,7 @@ public class LoginTests {
 		Thread.sleep(1000);
 		driver.quit();
 	}
-	@Test
+	@Test(priority=1)
 	public void validLoginTest() {
 		loginPOM.sendUserName("admin");
 		loginPOM.sendPassword("12345");
@@ -56,12 +56,6 @@ public class LoginTests {
 		System.out.println(driver.getCurrentUrl());
 		Assert.assertEquals(driver.getCurrentUrl(),properties.getProperty("homeURL") );
 	}
-
-public WebDriver getDriver()
-{
-	return loginPOM.getDriver();
-}
-
 
 	
 }

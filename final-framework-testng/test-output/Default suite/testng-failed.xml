@@ -3,14 +3,14 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.training.pom.ChangeAdminPassword">
+      <class name="com.training.cyclos.tests.GrantLoan">
         <methods>
-          <include name="beforeClass"/>
-          <include name="beforeMethod"/>
           <include name="afterMethod"/>
-          <include name="changeAdminPass"/>
+          <include name="beforeClass"/>
+          <include name="grantloan"/>
+          <include name="beforeMethod"/>
         </methods>
-      </class> <!-- com.training.pom.ChangeAdminPassword -->
+      </class> <!-- com.training.cyclos.tests.GrantLoan -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
