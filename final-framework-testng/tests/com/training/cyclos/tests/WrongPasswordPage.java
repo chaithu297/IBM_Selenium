@@ -27,7 +27,7 @@ public class WrongPasswordPage {
   @Test
   public void wrongPassword() {
 	  wrongPasswordPagePom.sendUserName("chaitanya");
-	  wrongPasswordPagePom.sendPassword("mehadi");
+	  wrongPasswordPagePom.sendPassword("12345");
 	 wrongPasswordPagePom.clickSubmit();
 	  wrongPasswordPagePom.clickPersonalLink();
 	  Assert.assertEquals(wrongPasswordPagePom.profileText(), true);
@@ -36,9 +36,9 @@ public class WrongPasswordPage {
 	  Assert.assertEquals(wrongPasswordPagePom.isChangePasswordDisplayed(),true);
 	  screenShot.captureScreenShot("Fields Displayed 12");
 	  wrongPasswordPagePom.clickChangePassword();
-	  wrongPasswordPagePom.sendOldPassword("mehadi");
-	  wrongPasswordPagePom.sendNewPassword("12345");
-	  wrongPasswordPagePom.sendConfirmPassword("1234567");
+	  wrongPasswordPagePom.sendOldPassword("12345");
+	  wrongPasswordPagePom.sendNewPassword("mehadi");
+	  wrongPasswordPagePom.sendConfirmPassword("mehadiii");
 	  screenShot.captureScreenShot("Change Password233");
 	  wrongPasswordPagePom.changeSubmit();
 	  Alert alt = driver.switchTo().alert();

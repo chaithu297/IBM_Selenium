@@ -1,13 +1,18 @@
 package com.training.cyclos.tests;
 
+import static org.testng.Assert.assertEquals;
+
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.List;
 import java.util.Properties;
 
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -25,21 +30,19 @@ public class GrantLoan {
 	private ScreenShot screenShot;
 	private Properties properties;
 	String baseUrl;
+	boolean expected;
 	
   @Test
   public void grantloan() throws Exception {
 	  grantLoanPom.sendUserName("admin");
 	  grantLoanPom.sendPassword("12345");
 	  grantLoanPom.clickLoginBtn();
-//	  System.out.println(driver.getCurrentUrl());
 	  grantLoanPom.sendMemberName("manzoor");
-	  Thread.sleep(3000);
-//	  System.out.println(driver.getCurrentUrl());
 	  grantLoanPom.grantloan();
-//	  grantLoanPom.grantloan();
-
-	  grantLoanPom.sendAmount("100");
-	  grantLoanPom.description("Home Loan");
+	  Thread.sleep(3000);
+      grantLoanPom.sendAmount("100");
+	  grantLoanPom.description("Testing Loan1");
+	  screenShot.captureScreenShot("grant loan");
 	  grantLoanPom.clickSubmit();
 	  grantLoanPom.label();
 	  grantLoanPom.clickSubmitBtn();
@@ -48,6 +51,18 @@ public class GrantLoan {
 	  alt.accept();
 	  grantLoanPom.clickLoan();
 	  grantLoanPom.viewLoan();
+	  screenShot.captureScreenShot("View loan");
+	  grantLoanPom.clickLogout();
+	  System.out.println(alt.getText());
+	  alt.accept();
+//	  Login with manzoor
+	  grantLoanPom.sendUserName("manzoor");
+	  grantLoanPom.sendPassword("manzoor");
+	  grantLoanPom.clickLoginBtn();
+	  grantLoanPom.clickAccountLnk();
+	  grantLoanPom.clickLoanLnk();
+	  String expected = driver.findElement(By.xpath("//td[contains(text(),'Search results')]")).getText();
+	  assertEquals("Search results", expected);
   }
   @BeforeMethod
   public void beforeMethod() {

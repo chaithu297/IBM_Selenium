@@ -38,6 +38,7 @@ public class AdvertisementRemove {
 	  advertisementPom.clickLoginBtn();
 	  advertisementPom.sendMemberUserName("manzoor");
 	  advertisementPom.clickAdvertisment();
+	  screenShot.captureScreenShot("Advertisment");
 	  advertisementPom.clickSubmitBtn();
 	  advertisementPom.clickRemoveAdd();
 	  Alert alt = driver.switchTo().alert();
@@ -53,6 +54,7 @@ public class AdvertisementRemove {
 	  advertisementPom.clickLoginBtn();
 	  advertisementPom.clickPersonel();
 	  advertisementPom.clickAdvertisment();
+	  screenShot.captureScreenShot("Advertisement removed");
 	  List<WebElement> list=driver.findElements(By.xpath("//tbody//tbody/child::tr/child::td/div/a[@class='linkList viewAd']"));
 	
 	  for(int i=0;i<list.size();i++)

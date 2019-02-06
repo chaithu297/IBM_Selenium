@@ -5,6 +5,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
@@ -41,7 +42,9 @@ private WebDriver driver;
 	@FindBy(id="subjectText")
 	private WebElement subjectType;
 	
-	@FindBy(xpath="//iframe[@title='Rich text editor, bodyText']")
+	//table[@class='cke_editor']/tbody/tr[2]/td/iframe
+	
+	@FindBy(xpath="//table[@class='cke_editor']//tr//iframe")
 	private WebElement bodyText;
 	
 	@FindBy(xpath="//input[@value='Submit']")
@@ -50,6 +53,14 @@ private WebDriver driver;
 	@FindBy(xpath="//span[contains(text(),'Logout')]")
 	private WebElement logoutBtn;
 	
+	@FindBy(xpath="//span[contains(text(),'Personal')]")
+	private WebElement personalLink;
+	
+	@FindBy(xpath="//span[contains(text(),'Messages')]")
+	private WebElement messagesLnk;
+	
+	@FindBy(xpath="//tr[contains(@class,'unread')]//child::td[3]//a[contains(text(),'Loan Test')]")
+	private WebElement viewMessage;
 	
 	public void sendUserName(String userName) {
 		this.userName.clear();
@@ -99,12 +110,19 @@ private WebDriver driver;
 		this.subjectType.sendKeys(subjectType);
 	}
 	
-	public void sendBodyText(String welcome) {
-		driver.switchTo().frame(this.bodyText);
+	public void sendBodyText(String welcome) throws InterruptedException {
+//		driver.switchTo().frame(this.bodyText);
+//		Thread.sleep(30000);
 //		this.bodyText.clear();
-		WebElement ele = driver.findElement(By.xpath("//body[@class='cke_show_borders']//p"));
-		ele.click();
-		ele.sendKeys(welcome);
+//		
+//		
+		Actions act = new Actions(driver);
+		act.moveToElement(this.bodyText).click().sendKeys(welcome).build().perform();
+//		String ele = driver.findElement(By.xpath("//*[@class='cke_show_borders']/p")).getAttribute("value");
+//		System.out.println(ele);
+//		ele.sendKeys(welcome);
+		
+//		this.bodyText.sendKeys(welcome);
 	}
 	
 	public void clickSubmit() {
@@ -113,6 +131,18 @@ private WebDriver driver;
 	
 	public void clickLogOut() {
 		this.logoutBtn.click();
+	}
+	
+	public void clickPersonal() {
+		this.personalLink.click();
+	}
+	
+	public void clickMessageslnk() {
+		this.messagesLnk.click();
+	}
+	
+	public void clickViewMessages() {
+		this.viewMessage.click();
 	}
 	
 	

@@ -38,6 +38,7 @@ public class RepaymentLoan {
 	  repaymentLoanPom.clickLoan();
 	  repaymentLoanPom.clickViewIcon();
 	  repaymentLoanPom.sendAmount("50");
+	  screenShot.captureScreenShot("Repay loan");
 	  repaymentLoanPom.clickSubmit();
 	  Alert alt = driver.switchTo().alert();
 	  System.out.println(alt.getText());
@@ -46,6 +47,7 @@ public class RepaymentLoan {
 	  alt.accept();
 	  String actual = driver.findElement(By.xpath("//tbody//tr[4]/child::td[4]")).getText();
 	  repaymentLoanPom.clickAccountInformation();
+	  screenShot.captureScreenShot("loan repaid");
 	  String expected = driver.findElement(By.xpath("//td[@class='headerLabel']/following-sibling::td")).getText();
 	  assertEquals(actual, expected);
   }
