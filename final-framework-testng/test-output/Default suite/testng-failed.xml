@@ -3,14 +3,14 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.training.cyclos.tests.AdvertisementRemove">
+      <class name="com.training.cyclos.tests.AddAdvertisement">
         <methods>
-          <include name="afterMethod"/>
-          <include name="beforeClass"/>
-          <include name="f"/>
-          <include name="beforeMethod"/>
+          <include name="loginDBTest" invocation-numbers="0 1 2"/>
+          <include name="setUpBeforeClass"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
         </methods>
-      </class> <!-- com.training.cyclos.tests.AdvertisementRemove -->
+      </class> <!-- com.training.cyclos.tests.AddAdvertisement -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

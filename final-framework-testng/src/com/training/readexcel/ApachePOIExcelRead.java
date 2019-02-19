@@ -62,10 +62,17 @@ public class ApachePOIExcelRead {
 
 					case Cell.CELL_TYPE_NUMERIC:
 						
-						if(((Double) cell.getNumericCellValue()).toString()!=null){
-							tempList1[cellCount] = ((Double) cell.getNumericCellValue()).toString(); 
+//						if(((Double) cell.getNumericCellValue()).toString()!=null){
+//							tempList1[cellCount] = ((Double) cell.getNumericCellValue()).toString(); 
+//						} 
+//						break;
+						
+						if(cell.getNumericCellValue()!=0){
+							int j=(int)cell.getNumericCellValue();
+							tempList1[cellCount] = String.valueOf(j); 
 						} 
 						break;
+						
 					case Cell.CELL_TYPE_STRING:
 						if(cell.getStringCellValue()!=null){
 							tempList1[cellCount] =cell.getStringCellValue();
@@ -89,7 +96,7 @@ public class ApachePOIExcelRead {
 	}
 
 	public static void main(String[] args) {
-		String fileName = "C:/Users/Naveen/Desktop/Testing.xlsx";
+		String fileName = "*\\CYCTD.xlsx";
 		
 		for(String [] temp : new ApachePOIExcelRead().getExcelContent(fileName)){
 			for(String  tt : temp){
